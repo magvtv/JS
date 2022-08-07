@@ -1,46 +1,68 @@
 /*
-Arrays
-    Trying to understand and do questions on this.
-    Methods such as shift & unshift, pop, push. Shift removes the first item in the array, unshift adds an item at index[0] of the array.  
-    Arrays are objects. Array indices are the object keys.
-    Recommended o use arrays for ordered collection of items. Otherwise, using 
+    learning json - which is basically objects in js
+    importing data from an api (marvel, cars)
+    learning how to immediately invoke function expression (IIFE)
 
-Mulitdimensional array
-    This are arrays within an array
- */
+    really need to know how to manipulate .json file to get certain items
+*/
 
-// let dailyActions = []
-// dailyActions.unshift('Bible', 'Book one chapter')
-// dailyActions.push('Exercise')
-// console.log(dailyActions)
+const options = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': '16806452c5mshfb321706c9a62fbp118a73jsn7602a14f4b61',
+        'X-RapidAPI-Host': 'mcu-comics-and-characters.p.rapidapi.com'
+    }
+};
 
+fetch('https://mcu-comics-and-characters.p.rapidapi.com/mcu/characters', options)
+    .then(
+        response => response.json()
+    )
+    .then(
+        data => {
+            console.log(data)
+        }
+    )
+    .catch(
+        err => console.warn(err)
+    );
 
-
-let clothBrandData = [
-    ['Dolce & Gabbana', 1985],
-    ['Chanel', 1910],
-    ['Ralph Lauren', 1967],
-    ['Huga Boss', 1924],
-    ['Nordstrom', 1901]
-];
-
-
-// clothBrandData.forEach((brand) => {
-//     brand.forEach((yr) => {
-//         console.log(yr)
-//     });
-// });
-
-// let i, j;
-// for (i of clothBrandData) {
-//     for (j of i) {
-//         console.log(j)
+// let car = "Aston Martin Valhalla";
+// const changeCar = (() => {
+//     return {
+//         toPorsche: () => {
+//             car = "Porsche Panamera";
+//             return car;
+//         },
+//         toFerari: () => {
+//             car = "Ferari Roma"
+//             return car;
+//         },
+//         toBugatti: () => {
+//             car = "Buggati La Voiture Noire";
+//             return car;
+//         },
+//         toLamborghini: () => {
+//             car = "Lamborghini Urus Graphite Capsule";
+//             return car;
+//         }
 //     }
-// }
+// })();
 
-// for (let x = 0; x < clothBrandData.length; x++) {
-//     let innerArray = clothBrandData[x].length;
-//     for (let y = 0; y < innerArray; y++) {
-//         console.log(clothBrandData[x][y]);
-//     }
-// }
+
+// console.log(
+//     changeCar.toFerari()
+// );
+
+
+const lyric = (place) => {
+    console.log("I got fans in " + place + "... Big Fans!")
+}
+
+const adlib = (callback) => {
+    let place = "Puerto Rico";
+    callback(place);
+}
+
+adlib(lyric)
+
